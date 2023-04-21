@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SPI Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type="number"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      input[type="reset"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      input[type="reset"]:hover {
+        background-color: #3e8e41;
+      }
+      #totalMarks {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <form onsubmit="calculateSPI(); return false;">
+      <label for="subject1">Mathematics :</label>
+      <input type="number" step="any" id="subject1" name="subject1">
+      <label for="subject2">Physics Theory :</label>
+      <input type="number" step="any" id="subject2" name="subject2">
+      <label for="subject3">Physics Practical :</label>
+      <input type="number" step="any" id="subject3" name="subject3">
+      <label for="subject4">JAVA Theory :</label>
+      <input type="number" step="any" id="subject4" name="subject4">
+      <label for="subject5">JAVA Practical :</label>
+      <input type="number" step="any" id="subject5" name="subject5">
+      <label for="subject6">Software Engineering Theory :</label>
+      <input type="number" step="any" id="subject6" name="subject6">
+      <label for="subject7">Software Engineering Practical :</label>
+      <input type="number" step="any" id="subject7" name="subject7">
+      <label for="subject8">IOT Workshop :</label>
+      <input type="number" step="any" id="subject8" name="subject8">
+      <label for="subject9">Computer Workshop :</label>
+      <input type="number" step="any" id="subject9" name="subject9">
+      <label for="subject10">Environmental Science :</label>
+      <input type="number" step="any" id="subject10" name="subject10">
+    </br>
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset">
+    </form>
+    <div id="totalMarks"></div>
+    <script>
+      function calculateSPI() {
+        var subjectMarks = [];
+        var credits=[6,3,1,3,3,3,1,2,2,0];
+        subjectMarks.push(parseFloat(document.getElementById("subject1").value));
+        subjectMarks.push(parseFloat(document.getElementById("subject2").value));
+        subjectMarks.push(parseFloat(document.getElementById("subject3").value));
+        subjectMarks.push(parseFloat(document.getElementById("subject4").value));
+        subjectMarks.push(parseFloat(document.getElementById("subject5").value));
+        subjectMarks.push(parseFloat(document.getElementById("subject6").value));
+        subjectMarks.push(parseFloat(document.getElementById("subject7").value));
+        subjectMarks.push(parseFloat(document.getElementById("subject8").value));
+        subjectMarks.push(parseFloat(document.getElementById("subject9").value));
+        subjectMarks.push(parseFloat(document.getElementById("subject10").value));
+        var totalMarks = 0;
+        for (var i = 0; i < subjectMarks.length; i++) {
+          var grade=getGrade(subjectMarks[i]);
+          totalMarks +=(credits[i]*grade);
+        }
+        totalMarks/=24;
+      document.getElementById("totalMarks").innerHTML = "SPI : " + totalMarks.toFixed(2);
+  }
+  function getGrade(marks) {
+    var gradePoint;
+            if(marks>=95) {
+                gradePoint=10;
+            } else if(marks>=90) {
+                gradePoint=9.5;
+            } else if(marks>=85) {
+                gradePoint=9;
+            } else if(marks>=80) {
+                gradePoint=8.5;
+            } else if(marks>=75) {
+                gradePoint=8;
+            } else if(marks>=70) {
+                gradePoint=7.5;
+            } else if(marks>=65) {
+                gradePoint=7;
+            } else if(marks>=60) {
+                gradePoint=6.5;
+            } else if(marks>=55) {
+                gradePoint=6;
+            } else if(marks>=50) {
+                gradePoint=5.5;
+            } else if(marks>=45) {
+                gradePoint=5;
+            } else if(marks>=40) {
+                gradePoint=4.5;
+            } else if(marks>=35) {
+                gradePoint=4;
+            } else {
+                gradePoint=0;
+            }
+        return gradePoint;
+  }
+</script>
+</body>
+</html>
+       
